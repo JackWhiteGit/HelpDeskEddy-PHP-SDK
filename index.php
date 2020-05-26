@@ -4,4 +4,3 @@
 phpinfo();
 echo 'test';
 
-
