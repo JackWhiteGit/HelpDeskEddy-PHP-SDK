@@ -1,11 +1,11 @@
 {
-  "name": "HDESDK/hde-sdk-package",
+  "name": "hdesdk/hde-sdk-package",
   "description": "description_text",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "HDESDK",
+      "name": "JackWhiteGit",
       "homepage": "https://github.com/JackWhiteGit/sdk_proj"
     }
   ],
