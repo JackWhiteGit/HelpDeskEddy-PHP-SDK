@@ -1,5 +1,7 @@
 <?php
 
+namespace HDESDK\HDESDKInit;
+
 use HDESDK\Auth\Auth;
 use HDESDK\Requests\Requests;
 use HDESDK\Departments\Departments;
@@ -7,7 +9,7 @@ use HDESDK\Tickets\Ticket;
 use HDESDK\Comment\Comment;
 use HDESDK\User\User;
 
-class HDESDK
+class HDESDKInit
 {
     public $token;
 

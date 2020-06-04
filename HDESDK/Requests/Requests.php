@@ -3,14 +3,27 @@
 
 namespace HDESDK\Requests;
 
-use HDESDK\Auth;
-
-class Requests extends Auth\Auth
+class Requests
 {
     public $requests_array;
     public $request_type;
     public $option_string;
     private $request_config;
+
+    public $user_email;
+    private $apikey;
+    public $domen;
+    public $auth_token;
+
+    public function SetAuthData($user_email, $apikey, $domen){
+    $this->user_email = $user_email;
+    $this->apikey = $apikey;
+    $this->domen = $domen;
+
+    $this->auth_token =  base64_encode($user_email.':'.$apikey);
+    return $this->auth_token;
+
+}
 
 
 
