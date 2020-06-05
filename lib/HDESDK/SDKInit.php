@@ -278,7 +278,7 @@ class SDKInit extends Requests
      * @throws Departments
      */
     public function DepartmentListGet($options){
-        $this->answer = Departments::DepartmentListGet('DepartmentListGet',$options);
+        $this->answer = Departments::SetRequest('DepartmentListGet',$options);
         return  $this->answer;
     }
 
