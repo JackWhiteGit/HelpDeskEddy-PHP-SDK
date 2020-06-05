@@ -10,6 +10,7 @@ $test = new \HDESDK\SDKInit();
 //User authorization
 $test->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
 
+
 // Request examples
 $options = array(
     'ticket_id' => 3,
