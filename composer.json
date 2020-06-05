@@ -9,6 +9,11 @@
       "homepage": "https://github.com/JackWhiteGit/sdk_proj"
     }
   ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
    "autoload": {
     "psr-0": {
       "HDESDK": "lib/"
