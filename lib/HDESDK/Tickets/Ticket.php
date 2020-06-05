@@ -3,53 +3,55 @@
 
 namespace HDESDK\Tickets;
 
-use HDESDK\Auth;
 use HDESDK\Requests;
 
 class Ticket extends Requests\Requests
 {
-    public $auth_token;
+    public $answer;
 
-    public function SetAuthToken($auth_token){
-        $this->auth_token=$auth_token;
+    public function TicketCreate($options){
+        $this->answer = Requests\Requests::SetRequest('TicketCreate',$options);
+        return  $this->answer;
     }
 
-    public function TicketCreate(){
-
-
+    public function TicketUpdate($options){
+        $this->answer = Requests\Requests::SetRequest('TicketUpdate',$options);
+        return  $this->answer;
     }
 
-    public function TicketUpdate(){
-
+    public function TicketGet($options){
+        $this->answer = Requests\Requests::SetRequest('TicketGet',$options);
+        return  $this->answer;
     }
 
-    public function TicketGet(){
-
-
+    public function TicketsGet($options){
+        $this->answer = Requests\Requests::SetRequest('TicketsGet',$options);
+        return  $this->answer;
     }
 
-    public function TicketsGet(){
-
+    public function TicketDelete($options){
+        $this->answer = Requests\Requests::SetRequest('TicketDelete',$options);
+        return  $this->answer;
     }
 
-    public function TicketDelete(){
-
+    public function TicketAnswersGet($options){
+        $this->answer = Requests\Requests::SetRequest('TicketAnswersGet',$options);
+        return  $this->answer;
     }
 
-    public function TicketAnswersGet(){
-
+    public function TicketAnswerSet($options){
+        $this->answer = Requests\Requests::SetRequest('TicketAnswerSet',$options);
+        return  $this->answer;
     }
 
-    public function TicketAnswerSet(){
-
+    public function TicketAnswerUpdate($options){
+        $this->answer = Requests\Requests::SetRequest('TicketAnswerUpdate',$options);
+        return  $this->answer;
     }
 
-    public function TicketAnswerUpdate(){
-
-    }
-
-    public function TicketAnswerDelete(){
-
+    public function TicketAnswerDelete($options){
+        $this->answer = Requests\Requests::SetRequest('TicketAnswerDelete',$options);
+        return  $this->answer;
     }
 
 }

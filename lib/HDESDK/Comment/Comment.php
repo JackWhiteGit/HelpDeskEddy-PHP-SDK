@@ -3,24 +3,30 @@
 
 namespace HDESDK\Comment;
 
-use HDESDK\Auth;
+
 use HDESDK\Requests;
 
-class Comment
+class Comment extends Requests\Requests
 {
-    public function CommentsGet(){
+    public $answer;
 
+    public function CommentsGet($options){
+        $this->answer = Requests\Requests::SetRequest('CommentsGet',$options);
+        return  $this->answer;
     }
 
-    public function CommentCreate(){
-
+    public function CommentCreate($options){
+        $this->answer = Requests\Requests::SetRequest('CommentCreate',$options);
+        return  $this->answer;
     }
 
-    public function CommentUpdate(){
-
+    public function CommentUpdate($options){
+        $this->answer = Requests\Requests::SetRequest('CommentUpdate',$options);
+        return  $this->answer;
     }
 
-    public function CommentDelete(){
-
+    public function CommentDelete($options){
+        $this->answer = Requests\Requests::SetRequest('CommentDelete',$options);
+        return  $this->answer;
     }
 }

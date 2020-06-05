@@ -3,14 +3,15 @@
 
 namespace HDESDK\Departments;
 
-use HDESDK\Auth;
 use HDESDK\Requests;
 
-class Departments
+class Departments extends Requests\Requests
 {
+    public $answer;
 
-    public function DepartmentListGet(){
-
+    public function DepartmentListGet($options){
+        $this->answer = Requests\Requests::SetRequest('DepartmentListGet',$options);
+        return  $this->answer;
     }
 
 }

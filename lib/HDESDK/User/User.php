@@ -3,28 +3,34 @@
 
 namespace HDESDK\User;
 
-use HDESDK\Auth;
 use HDESDK\Requests;
 
 class User extends Requests\Requests
 {
-    public function UserListGet(){
+    public $answer;
 
+    public function UserListGet($options){
+        $this->answer = Requests\Requests::SetRequest('UserListGet',$options);
+        return  $this->answer;
     }
 
-    public function UserGet($user_id){
-
+    public function UserGet($options){
+        $this->answer = Requests\Requests::SetRequest('UserGet',$options);
+        return  $this->answer;
     }
 
-    public function UserCreate(){
-
+    public function UserCreate($options){
+        $this->answer = Requests\Requests::SetRequest('UserCreate',$options);
+        return  $this->answer;
     }
 
-    public function UserUpdate(){
-
+    public function UserUpdate($options){
+        $this->answer = Requests\Requests::SetRequest('UserUpdate',$options);
+        return  $this->answer;
     }
 
-    public function UserDelete(){
-
+    public function UserDelete($options){
+        $this->answer = Requests\Requests::SetRequest('UserDelete',$options);
+        return  $this->answer;
     }
 }
