@@ -13,10 +13,20 @@ $test->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy
 
 // Request examples
 $options = array(
-    'ticket_id' => 3,
+    'title' => 'Problem with email',
+    'description'      => '<p>Problem with email info@example.com</p>',
+    'sla_date'         => '07.06.2020 00:00',
+    'priority_id'      => 1,
+    'user_email'       => 'example@example.com',
+    'create_from_user' => 1
+);
+
+//$test->TicketCreate($options); //ticket_create
+
+$options = array(
     'page'      => 1
 );
-$answer = $test->CommentsGet($options);
+$ticket_list = $test->TicketsGet($options); // view tickets list, page = 1
 
 
 
