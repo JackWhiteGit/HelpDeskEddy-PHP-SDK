@@ -14,6 +14,7 @@
     "ext-curl": "*",
     "ext-json": "*"
   },
+  
    "autoload": {
     "psr-0": {
       "HDESDK": "lib/"

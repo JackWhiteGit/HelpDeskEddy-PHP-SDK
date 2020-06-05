@@ -283,5 +283,4 @@ class SDKInit extends Requests
     }
 
     //------------------------------- /Departments Part ---------------------------
-
 }
