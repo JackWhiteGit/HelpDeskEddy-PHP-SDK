@@ -16,7 +16,6 @@ $options = array(
     'ticket_id' => 3,
     'page'      => 1
 );
-
 $answer = $test->CommentsGet($options);
 
 
