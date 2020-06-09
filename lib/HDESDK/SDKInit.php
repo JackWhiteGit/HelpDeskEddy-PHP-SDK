@@ -44,7 +44,7 @@ class SDKInit extends Requests
     //------------------------------- Tickets Part ---------------------------------
 
     /**
-     * Create new Ticket
+     * Create a new Ticket
      *
      * @param array $options
      * @return string
@@ -56,7 +56,7 @@ class SDKInit extends Requests
     }
 
     /**
-     * Update Tickets data by ticket_id
+     * Update Ticket data by ticket_id
      *
      * @param array $options
      * @return string
@@ -180,7 +180,7 @@ class SDKInit extends Requests
     }
 
     /**
-     * Update Comments data by ticket_id and comment id
+     * Update Comment data by ticket_id and comment id
      *
      * @param array $options
      * @return string
@@ -277,7 +277,7 @@ class SDKInit extends Requests
      * @return string
      * @throws Departments
      */
-    public function DepartmentListGet($options){
+    public function DepartmentListGet(){
         $this->answer = Departments::DepartmentListGet('DepartmentListGet',$options);
         return  $this->answer;
     }

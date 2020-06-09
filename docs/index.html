@@ -1,10 +1,1701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <title>HelpDeskEddy PHP SDK</title>
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
 </head>
-<body>
 
+<body>
+<div class="container-fluid body-content">
+    <div class="container">
+        <div class="col-md-3">
+            <div class="menu_fixed well clearfix">
+
+
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Start</h3>
+
+                    <ul>
+                        <li><a href="#Namespaces" >Namespaces List</a></li>
+                        <li><a href="#Classes" >Classes List</a></li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Authorization</h3>
+                    <ul>
+                        <li><a href="#Authorization" >New access token</a></li>
+                        <li><a href="#GetToken" >Get access token</a></li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Departments</a></h3>
+                    <ul>
+                        <li><a href="#Departments" >Get Departments</a></li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Tickets</a></h3>
+
+                    <ul>
+                        <li><a href="#TicketGet" >Get Ticket</a></li>
+                        <li><a href="#TicketsGet" >Get Tickets</a></li>
+                        <li><a href="#TicketCreate" >New Ticket</a></li>
+                        <li><a href="#TicketUpdate" >Update Ticket</a></li>
+                        <li><a href="#TicketDelete" >Delete Ticket</a></li>
+                        <li><a href="#TicketAnswersGet" >Get Answers</a></li>
+                        <li><a href="#TicketAnswerSet" >New Answer</a></li>
+                        <li><a href="#TicketAnswerUpdate" >Update Answer</a></li>
+                        <li><a href="#TicketAnswerDelete" >Delete Answer</a></li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Comments</h3>
+
+                    <ul>
+                        <li><a href="#CommentsGet" >Get Comments</a></li>
+                        <li><a href="#CommentCreate" >New Comment</a></li>
+                        <li><a href="#CommentUpdate" >Update Comment</a></li>
+                        <li><a href="#CommentDelete" >Delete Comment</a></li>
+                    </ul>
+                </div>
+                <hr/>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Users</h3>
+
+                    <ul>
+                        <li><a href="#UserListGet" >Get Users</a></li>
+                        <li><a href="#UserGet" >Get User</a></li>
+                        <li><a href="#UserCreate" >New User</a></li>
+                        <li><a href="#UserUpdate" >Update User</a></li>
+                        <li><a href="#UserDelete" >Delete User</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="row-fluid">
+                <h2>// HDE PHP SDK <a href="https://github.com/JackWhiteGit/sdk_proj" title="Github Repository"><i class="fa fa-github"></i></a></h2><hr />
+                <p class="lead">
+                    HDE PHP SDK is Open Source PHP SDK for supporting HDE APIs.
+                </p>
+            </div><br /><br />
+            <div class="row clearfix">
+                <div class="col-md-12" id="Namespaces">
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box"><h3><i class="fa fa-book fa-1x"></i> Namespaces List</h3>
+                            <hr/>
+                            <ul>
+                                <li>HDESDK</li>
+                                <li>HDESDK\Auth</li>
+                                <li>HDESDK\Departments</li>
+                                <li>HDESDK\Requests</li>
+                                <li>HDESDK\User</li>
+                                <li>HDESDK\Comment</li>
+                                <li>HDESDK\Tickets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12" id="Classes">
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box"><h3><i class="fa fa-book fa-1x"></i> Classes List</h3>
+                            <hr/>
+                            <ul>
+                                <li>SDKInit</li>
+                                <li>Auth</li>
+                                <li>Departments</li>
+                                <li>Requests</li>
+                                <li>Ticket</li>
+                                <li>User</li>
+                                <li>Comment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12" >
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box">
+                            <h3><i class="fa fa-book fa-1x"></i> Authorization part</h3>
+                            <!--<h3>All needed methods included into SDKInit class for convenience. Thus, we consider only them. </h3>
+                            <hr/>
+                            <h4>Method List</h4>-->
+                            <div>
+                                    <div id="Authorization">
+                                        <p>Auth ($user_email, $apikey, $domen) - Generates a new access token</p>
+                                        <span>@params</span>
+                                        <ul>
+                                            <li>$user_email - registered user email address</li>
+                                            <li>$apikey     - API user key (You can find it in the user card, keys are visible only to the main administrator)</li>
+                                            <li>$domen      - Your HDE system address (example "https://example.helpdeskeddy.com")</li>
+                                        </ul>
+                                        <span>@return</span>
+                                        <ul>
+                                            <li>$token - Access token string</li>
+                                        </ul>
+                                        <pre>
+
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+                                            </code>
+                                        </pre>
+
+                                    </div>
+                                    <div id="GetToken">
+                                        <p>GetToken() - Return access token for current user</p>
+                                        <span>@return</span>
+                                        <ul>
+                                            <li>$token - Access token string</li>
+                                        </ul>
+                                        <pre>
+
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//User authorization
+$start->GetToken();
+                                            </code>
+                                        </pre>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12" >
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box">
+                            <h3><i class="fa fa-book fa-1x"></i> Departments Part</h3>
+                            <!--<h3>All needed methods included into SDKInit class for convenience. Thus, we consider only them. </h3>
+                            <hr/>
+                            <h4>Method List</h4>-->
+                            <div>
+                                <div id="Departments">
+                                    <p>DepartmentListGet() - Get Departments list</p>
+
+                                    <pre>
+
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//Get Departments list
+$start->DepartmentListGet();
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+    "data": {
+        {
+            "id":1,
+            "name":{
+                "ru":"Департамент поддержки",
+                "en":"Support Department",
+                "ua":"Департамент поддержки"
+            }
+        },{
+            "id":2,
+            "name":{
+                "ru":"Тестивый департамент",
+                "en":"Test department",
+                "ua":"Тестивый департамент"
+        }
+    }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12" >
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box">
+                            <h3><i class="fa fa-book fa-1x"></i> Tickets Part</h3>
+                            <div>
+                                <div id="TicketGet">
+                                    <p>TicketGet($options) - Get Ticket data by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'id'      => 1
+);
+
+//Print request data
+print_r($start->TicketGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 9,
+    "unique_id": "IQV-84397",
+    "date_created": "2016-08-15 17:05:19",
+    "date_updated": "2017-01-18 11:44:13",
+    "title": "Test ticket",
+    "source": "email",
+    "status_id": "process",
+    "priority_id": 3,
+    "type_id": 1,
+    "department_id": 2,
+    "department_name": "Отдел поддержки",
+    "owner_id": 1,
+    "owner_name": "Ivan",
+    "owner_lastname": "Petrov",
+    "owner_email": "ivan.petrov@example.com",
+    "user_id": 41,
+    "user_name": "John",
+    "user_lastname": "Doe",
+    "user_email": "john.doe@example.com",
+    "cc": [],
+    "bcc": [],
+    "followers": [],
+    "ticket_lock": 0,
+    "sla_date": "17.01.2017 16:00",
+    "freeze_date": "null",
+    "freeze": 0,
+    "deleted": 0,
+    "viewed_by_staff": 1,
+    "viewed_by_client": 1,
+    "rate": "",
+    "rate_comment": "",
+    "rate_date": "",
+    "custom_fields": [
+      {
+        "id": 3,
+        "field_type": "textarea",
+        "field_value": "4345"
+      },
+      {
+        "id": 4,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketsGet">
+                                    <p>TicketsGet($options) - Get Tickets list</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+   'page' => 2,
+   'search' => 'John',//Поиск по заявкам, строка (необязательный)
+   'user_list' => '1,14,22',//Поиск заявок по ID владельца строка (необязательный)
+   'owner_list' => '1,44,21',//Поиск заявок по ID исполнителя заявки, строка (необязательный)
+   'status_list' => 'open,closed',// Поиск заявок по ID статуса заявки, строка (необязательный)
+   'priority_list' => '1,3',//Поиск заявок по ID приоритета заявки, строка (необязательный)
+   'type_list' => '0,1',//Поиск заявок по ID типа заявки, строка (необязательный)
+   'freeze' => '0',//Фильтр по замороженным заявкам. Значение 0 - только активные заявки, значение 1 - только замороженные заявки, число (необязательный)
+   'type_list' => '0,1',//Поиск заявок по ID типа заявки, строка (необязательный)
+   'deleted' => '0',//Фильтр по удалённым заявкам. Значение 0 - только активные заявки, значение 1 - только удалённые заявки, число (необязательный)
+   'from_date_created' => '2017-12-31 00:00:00',//Дата создания от, строка (необязательный)
+   'to_date_created' => '2017-12-31 00:00:00',//Дата создания до, строка (необязательный)
+   'from_date_updated' => '2017-12-31 00:00:00',//Дата изменения от, строка (необязательный)
+   'to_date_updated' => '2017-12-31 00:00:00',//Дата изменения до, строка (необязательный)
+   'order_by' => 'date_created{desc}'//Сортировка заявок, можно указать через запятую. Заявки можно сортировать по параметрам: date_created, date_updated, viewed_by_staff, viewed_by_client. Порядок сортировки {asc} (по возрастанию) и {desc} (по убыванию). Значение по умолчанию: date_created{desc}, строка (необязательный)
+)
+
+//Print request data
+print_r($start->TicketsGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+    "data": {
+        "10": {
+            "id":10,
+            "unique_id":"YWP-43009",
+            "date_created":"2017-01-13 12:36:58",
+            "date_updated":"2017-01-17 13:36:46",
+            "title":"New ticket",
+            "source": "email",
+            "status_id":"open",
+            "priority_id":2,
+            "type_id":0,
+            "department_id":2,
+            "department_name":"\u041e\u0442\u0434\u0435\u043b \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438",
+            "owner_id":1,
+            "owner_name":"Ivan",
+            "owner_lastname":"Petrov",
+            "owner_email":"ivan.petrov@example.com",
+            "user_id":41,
+            "user_name":"John",
+            "user_lastname":"Doe",
+            "user_email":"john.doe@example.com",
+            "cc": [],
+            "bcc": [],
+            "followers": [],
+            "ticket_lock":0,
+            "sla_date":"13.01.2017 12:36",
+            "freeze_date":"null",
+            "freeze":0,
+            "deleted":0,
+            "viewed_by_staff":1,
+            "viewed_by_client":1,
+            "rate": "like",
+            "rate_comment": "Nice",
+            "rate_date": "2017-01-17 13:33:30",
+            "custom_fields":[
+                {
+                    "id":3,
+                    "field_type":"textarea",
+                    "field_value":"4345"
+                },{
+                    "id":4,
+                    "field_type":"checkbox",
+                    "field_value":1
+                }
+            ]
+        },
+        "9": {
+            "id":9,
+            "unique_id":"IQV-84397",
+            "date_created":"2016-08-15 17:05:19",
+            "date_updated":"2017-01-18 11:44:13",
+            "title":"Test ticket",
+            "source": "email",
+            "status_id":"process",
+            "priority_id":3,
+            "type_id":1,
+            "department_id":2,
+            "department_name":"\u041e\u0442\u0434\u0435\u043b \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438",
+            "owner_id":1,
+            "owner_name":"Ivan",
+            "owner_lastname":"Petrov",
+            "owner_email":"ivan.petrov@example.com",
+            "user_id":41,
+            "user_name":"John",
+            "user_lastname":"Doe",
+            "user_email":"john.doe@example.com",
+            "cc": [],
+            "bcc": [],
+            "followers": [],
+            "ticket_lock":0,
+            "sla_date":"17.01.2017 16:00",
+            "freeze_date":"null",
+            "freeze":0,
+            "deleted":0,
+            "viewed_by_staff":1,
+            "viewed_by_client":1,
+            "rate": "",
+            "rate_comment": "",
+            "rate_date": "",
+            "custom_fields":[
+                {
+                    "id":3,
+                    "field_type":"textarea",
+                    "field_value":"4345"
+                },{
+                    "id":4,
+                    "field_type":"checkbox",
+                    "field_value":1
+                }
+            ]
+        },
+    }, "pagination": {
+        "total":"2",
+        "per_page":30,
+        "current_page":1,
+        "total_pages":1
+    }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketCreate">
+                                    <p>TicketCreate($options) - Create a new Ticket</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+   'title' => 'Problem with email',//Название заявки, строка (обязательный)
+   'description' => '<p>Problem with email info@example.com</p>',//Текст заявки, строка (обязательный)
+   'sla_date' => '01.01.1970 00:00',//Дата и время SLA, дата (необязательный)
+   'freeze_date' => '01.01.1970 00:00',//Заморозка заявки до даты и времени, дата (необязательный)
+   'status_id' => 'process',// Статус заявки, строка (необязательный)
+   'priority_id' => 1,//ID приоритета, число (необязательный)
+   'type_id' => 2,//ID типа, число (необязательный)
+   'department_id' => 1,//ID департамента, число (необязательный)
+   'ticket_lock' => false,//Блокировка заявки. true - блокировать заявку. false - разблокировать заявку, булево (необязательный)
+   'owner_id' => 1,//ID исполнителя, число (необязательный)
+   'user_id' => 2,//ID владельца заявки, число (необязательный)
+   'user_email' => 'email@example.com',//Если не задан ID владельца заявки, то для создания заявки будет использоваться э-почта пользователя, если пользователь не существует, то он будет автоматически создан, строка (необязательный)
+   'cc' => array(),//Копия письма, массив почтовых ящиков (необязательный)
+   'bcc' => array(),//Скрытая копия письма, массив почтовых ящиков (необязательный)
+   'followers' => array(),//Список пользователей следящих за заявкой, пользователь должен быть сотрудником, массив user_id (необязательный)
+   'create_from_user' => 1,//Первый ответ в заявке от имени сотрудника – 0, от имени пользователя 1, по умолчанию 1, число (необязательный)
+   'custom_fields' => [1 => 3, 2 => 0],//Массив индивидуальных полей заявки, пример: custom_fields[field_id] = value, в случае иерархического поля, необходимо указывать уровень custom_fields[field_id][level] = value, массив (необязательный)
+   'files' => array()//приложений, массив файлов (необязательный)
+
+)
+
+//Print request data
+print_r($start->TicketCreate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 9,
+    "unique_id": "IQV-84397",
+    "date_created": "2016-08-15 17:05:19",
+    "date_updated": "2017-01-18 11:44:13",
+    "title": "Test ticket",
+    "source": "email",
+    "status_id": "process",
+    "priority_id": 3,
+    "type_id": 1,
+    "department_id": 2,
+    "department_name": "Отдел поддержки",
+    "owner_id": 1,
+    "owner_name": "Ivan",
+    "owner_lastname": "Petrov",
+    "owner_email": "ivan.petrov@example.com",
+    "user_id": 41,
+    "user_name": "John",
+    "user_lastname": "Doe",
+    "user_email": "john.doe@example.com",
+    "cc": [],
+    "bcc": [],
+    "followers": [],
+    "ticket_lock": 0,
+    "sla_date": "17.01.2017 16:00",
+    "freeze_date": "null",
+    "freeze": 0,
+    "deleted": 0,
+    "viewed_by_staff": 1,
+    "viewed_by_client": 1,
+    "rate": "",
+    "rate_comment": "",
+    "rate_date": "",
+    "custom_fields": [
+      {
+        "id": 3,
+        "field_type": "textarea",
+        "field_value": "4345"
+      },
+      {
+        "id": 4,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketUpdate">
+                                    <p>TicketUpdate($options) - Update Ticket data by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+   'id' => 9,//ID заявки, число (обязательный)
+   'title' => 'Problem with email',//Название заявки, строка (необязательный)
+   'sla_date' => '01.01.1970 00:00',//Дата и время SLA, дата (необязательный)
+   'freeze_date' => '01.01.1970 00:00',//Заморозка заявки до даты и времени, дата (необязательный)
+   'status_id' => 'process',// Статус заявки, строка (необязательный)
+   'priority_id' => 1,//ID приоритета, число (необязательный)
+   'type_id' => 2,//ID типа, число (необязательный)
+   'department_id' => 1,//ID департамента, число (необязательный)
+   'ticket_lock' => false,//Блокировка заявки. true - блокировать заявку. false - разблокировать заявку, булево (необязательный)
+   'owner_id' => 1,//ID исполнителя, число (необязательный)
+   'user_id' => 2,//ID владельца заявки, число (необязательный)
+   'cc' => array(),//Копия письма, массив почтовых ящиков (необязательный)
+   'bcc' => array(),//Скрытая копия письма, массив почтовых ящиков (необязательный)
+   'followers' => array(),//Список пользователей следящих за заявкой, пользователь должен быть сотрудником, массив user_id (необязательный)
+   'custom_fields' => [1 => 3, 2 => 0],//Массив индивидуальных полей заявки, пример: custom_fields[field_id] = value, в случае иерархического поля, необходимо указывать уровень custom_fields[field_id][level] = value, массив (необязательный)
+);
+
+//Print request data
+print_r($start->TicketUpdate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 9,
+    "unique_id": "IQV-84397",
+    "date_created": "2016-08-15 17:05:19",
+    "date_updated": "2017-01-18 11:44:13",
+    "title": "Test ticket",
+    "source": "email",
+    "status_id": "process",
+    "priority_id": 3,
+    "type_id": 1,
+    "department_id": 2,
+    "department_name": "Отдел поддержки",
+    "owner_id": 1,
+    "owner_name": "Ivan",
+    "owner_lastname": "Petrov",
+    "owner_email": "ivan.petrov@example.com",
+    "user_id": 41,
+    "user_name": "John",
+    "user_lastname": "Doe",
+    "user_email": "john.doe@example.com",
+    "cc": [],
+    "bcc": [],
+    "followers": [],
+    "ticket_lock": 0,
+    "sla_date": "17.01.2017 16:00",
+    "freeze_date": "null",
+    "freeze": 0,
+    "deleted": 0,
+    "viewed_by_staff": 1,
+    "viewed_by_client": 1,
+    "rate": "",
+    "rate_comment": "",
+    "rate_date": "",
+    "custom_fields": [
+      {
+        "id": 3,
+        "field_type": "textarea",
+        "field_value": "4345"
+      },
+      {
+        "id": 4,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketDelete">
+                                    <p>TicketDelete($options) - Delete Ticket by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'id'      => 1,// ID заявки, число (обязательный)
+    'delete'  => true,// false - перенос заявки в удаленные. true - полное удаление заявки. По умолчанию значение false, булево (необязательный)
+);
+
+//Print request data
+print_r($start->TicketDelete($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 9,
+    "unique_id": "IQV-84397",
+    "date_created": "2016-08-15 17:05:19",
+    "date_updated": "2017-01-18 11:44:13",
+    "title": "Test ticket",
+    "source": "email",
+    "status_id": "process",
+    "priority_id": 3,
+    "type_id": 1,
+    "department_id": 2,
+    "department_name": "Отдел поддержки",
+    "owner_id": 1,
+    "owner_name": "Ivan",
+    "owner_lastname": "Petrov",
+    "owner_email": "ivan.petrov@example.com",
+    "user_id": 41,
+    "user_name": "John",
+    "user_lastname": "Doe",
+    "user_email": "john.doe@example.com",
+    "cc": [],
+    "bcc": [],
+    "followers": [],
+    "ticket_lock": 0,
+    "sla_date": "17.01.2017 16:00",
+    "freeze_date": "null",
+    "freeze": 0,
+    "deleted": 0,
+    "viewed_by_staff": 1,
+    "viewed_by_client": 1,
+    "rate": "",
+    "rate_comment": "",
+    "rate_date": "",
+    "custom_fields": [
+      {
+        "id": 3,
+        "field_type": "textarea",
+        "field_value": "4345"
+      },
+      {
+        "id": 4,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketAnswersGet">
+                                    <p>TicketAnswersGet($options) - Get Ticket Answers history by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'page'      => 1, // Номер страницы, число (необязательный)
+);
+
+//Print request data
+print_r($start->TicketAnswersGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+    "data":[
+        {
+            "ticket_id":9,
+            "id":139,
+            "user_id":1,
+            "text":"<p>post content</p>",
+            "date_created":"17:45:00 26.01.2017",
+            "date_updated":"17:45:00 26.01.2017",
+            "files":[]
+        },{
+            "ticket_id":9,
+            "id":138,
+            "user_id":1,
+            "text":"<p>1</p><p>2</p><p>3</p>",
+            "date_created":"14:59:00 17.01.2017",
+            "date_updated":"14:59:00 17.01.2017",
+            "files":[
+                {
+                    "name":"test.gif",
+                    "url":"https://домен_системы/ru/file/download/f8bb43e593d867d27c965d38dfec721fbb084cf9",
+                    "data_type":"gif"
+                },{
+                    "name":"test.png",
+                    "url":"https://домен_системы/ru/file/download/b818daf594dd3b61098cce7fef7954bc0314edd5",
+                    "data_type":"png"
+                }
+            ]
+        },
+    ],
+    "pagination":{
+                "total":85,
+                "per_page":30,
+                "current_page":1,
+                "total_pages":3
+    }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketAnswerSet">
+                                    <p>TicketAnswerSet($options) - Add new Answer to Ticket by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'text'      => 'Problem with email', // Текст комментария, строка (обязательный)
+    'user_id'      => 1, // Владелец комментария, в случае если не будет указан - владельцем будет пользователь API, число (необязательный)
+    'files'      => [], // Массив приложений, массив файлов (необязательный)
+);
+
+//Print request data
+print_r($start->TicketAnswerSet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "ticket_id": 9,
+    "id": 150,
+    "user_id": 1,
+    "text": "<p>Problem with email</p>",
+    "date_created": "17:02:00 17.01.2017",
+    "date_updated": "17:02:00 17.01.2017",
+    "files": [
+      {
+        "name": "test.gif",
+        "url": "https://домен_системы/ru/file/download/f8bb43e593d867d27c965d38dfec721fbb084cf9",
+        "data_type": "gif"
+      },
+      {
+        "name": "test.png",
+        "url": "https://домен_системы/ru/file/download/b818daf594dd3b61098cce7fef7954bc0314edd5",
+        "data_type": "png"
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketAnswerUpdate">
+                                    <p>TicketAnswerUpdate($options) - Update Ticket Answer by ticket_id and answer id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'id'      => 15, // ID поста, число (обязательный)
+    'text'      => 'Problem with email', // Текст комментария, строка (обязательный)
+);
+
+//Print request data
+print_r($start->TicketAnswerUpdate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "ticket_id": 9,
+    "id": 150,
+    "user_id": 1,
+    "text": "<p>Problem with email</p>",
+    "date_created": "17:02:00 17.01.2017",
+    "date_updated": "17:02:00 17.01.2017",
+    "files": [
+      {
+        "name": "test.gif",
+        "url": "https://домен_системы/ru/file/download/f8bb43e593d867d27c965d38dfec721fbb084cf9",
+        "data_type": "gif"
+      },
+      {
+        "name": "test.png",
+        "url": "https://домен_системы/ru/file/download/b818daf594dd3b61098cce7fef7954bc0314edd5",
+        "data_type": "png"
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+
+                                <div id="TicketAnswerDelete">
+                                    <p>TicketAnswerDelete($options) - Delete Ticket Answer by ticket_id and answer id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'id'      => 15 // ID поста, число (обязательный)
+);
+
+//Print request data
+print_r($start->TicketAnswerDelete($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "errors": [
+    {
+      "code": "s-204",
+      "title": "No content",
+      "details": "Post with id {15} in ticket with id {9} successfully deleted"
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-md-12" >
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box">
+                            <h3><i class="fa fa-book fa-1x"></i> Comments Part</h3>
+                            <div>
+                                <div id="CommentsGet">
+                                    <p>CommentsGet($options) - Get Comments list by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1,// ID заявки, число (обязательный)
+    'page'      => 1// Номер страницы, число (необязательный)
+);
+
+//Print request data
+print_r($start->CommentsGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 9,
+    "unique_id": "IQV-84397",
+    "date_created": "2016-08-15 17:05:19",
+    "date_updated": "2017-01-18 11:44:13",
+    "title": "Test ticket",
+    "source": "email",
+    "status_id": "process",
+    "priority_id": 3,
+    "type_id": 1,
+    "department_id": 2,
+    "department_name": "Отдел поддержки",
+    "owner_id": 1,
+    "owner_name": "Ivan",
+    "owner_lastname": "Petrov",
+    "owner_email": "ivan.petrov@example.com",
+    "user_id": 41,
+    "user_name": "John",
+    "user_lastname": "Doe",
+    "user_email": "john.doe@example.com",
+    "cc": [],
+    "bcc": [],
+    "followers": [],
+    "ticket_lock": 0,
+    "sla_date": "17.01.2017 16:00",
+    "freeze_date": "null",
+    "freeze": 0,
+    "deleted": 0,
+    "viewed_by_staff": 1,
+    "viewed_by_client": 1,
+    "rate": "",
+    "rate_comment": "",
+    "rate_date": "",
+    "custom_fields": [
+      {
+        "id": 3,
+        "field_type": "textarea",
+        "field_value": "4345"
+      },
+      {
+        "id": 4,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="CommentCreate">
+                                    <p>CommentCreate($options) - Add new Comment to Ticket by ticket_id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'text'      => 'Problem with email', // Текст комментария, строка (обязательный)
+    'user_id'      => 1, // Владелец комментария, в случае если не будет указан - владельцем будет пользователь API, число (необязательный)
+    'files'      => [], // Массив приложений, массив файлов (необязательный)
+);
+
+//Print request data
+print_r($start->CommentCreate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "ticket_id": 9,
+    "id": 6,
+    "user_id": 1,
+    "text": "test",
+    "date_created": "18:18:34 05.01.2017",
+    "visible": "staff",
+    "files": [
+      {
+        "name": "test.gif",
+        "url": "https://домен_системы/ru/file/download/f8bb43e593d867d27c965d38dfec721fbb084cf9",
+        "data_type": "gif"
+      },
+      {
+        "name": "test.png",
+        "url": "https://домен_системы/ru/file/download/b818daf594dd3b61098cce7fef7954bc0314edd5",
+        "data_type": "png"
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="CommentUpdate">
+                                    <p>CommentUpdate($options) - Update Comment data by ticket_id and comment id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'id'      => 15, // ID комментария, число (обязательный)
+    'text'      => 'Problem with email', // Текст комментария, строка (обязательный)
+);
+
+//Print request data
+print_r($start->CommentUpdate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "ticket_id": 9,
+    "id": 6,
+    "user_id": 1,
+    "text": "Problem with email",
+    "date_created": "18:18:34 05.01.2017",
+    "visible": "staff",
+    "files": [
+      {
+        "name": "test.gif",
+        "url": "https://домен_системы/ru/file/download/f8bb43e593d867d27c965d38dfec721fbb084cf9",
+        "data_type": "gif"
+      },
+      {
+        "name": "test.png",
+        "url": "https://домен_системы/ru/file/download/b818daf594dd3b61098cce7fef7954bc0314edd5",
+        "data_type": "png"
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="CommentDelete">
+                                    <p>CommentDelete($options) - Delete Comment by ticket_id and comment id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'ticket_id'      => 1, // ID заявки, число (обязательный)
+    'id'      => 15 // ID комментария, число (обязательный)
+);
+
+//Print request data
+print_r($start->CommentDelete($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "errors": [
+    {
+      "code": "s-204",
+      "title": "No content",
+      "details": "Comment with id {15} in ticket with id {9} successfully deleted"
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12" >
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box">
+                            <h3><i class="fa fa-book fa-1x"></i> Users Part</h3>
+                            <div>
+                                <div id="UserListGet">
+                                    <p>UserListGet($options) - Get Users list</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'page'      => 1,// Номер страницы, число (необязательный)
+    'search'      => 'John Doe',// Поиск по пользователям, строка (необязательный)
+    'group_list'      => 1,// Поиск пользователей по ID группы, число (необязательный)
+    'from_date_created'      => '2018-12-31 00:00:00',// Дата создания от, строка (необязательный)
+    'to_date_created'      => '2018-12-31 00:00:00',// Дата создания до, строка (необязательный)
+    'from_date_updated'      => '2018-12-31 00:00:00',//Дата изменения от, строка (необязательный)
+    'to_date_updated'      => '2018-12-31 00:00:00',// Дата изменения до, строка (необязательный)
+    'order_by'      => 'name'// Сортировка пользователей, можно указать через запятую. Пользователей можно сортировать по параметрам: date_created, date_updated, name. Порядок сортировки {asc} (по возрастанию) и {desc} (по убыванию), строка (необязательный)
+);
+
+print_r($start->UserListGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": [
+    {
+      "id": 1,
+      "date_created": "2019-01-01 00:00:00",
+      "date_updated": "2019-01-01 00:00:00",
+      "name": "Admin",
+      "lastname": "",
+      "email": "test@helpdeskeddy.com",
+      "phone": "+37129770143",
+      "skype": "",
+      "website": "",
+      "organization": "",
+      "status": "active",
+      "language": "en",
+      "notifications": 0,
+      "api_key": "a32858b4-a65e-49ef-a960-0b7e8d5d1e47",
+      "group": {
+        "id": 2,
+        "type": "staff",
+        "name": {
+          "ru": "Администратор",
+          "en": "Administrator",
+          "ua": ""
+        },
+        "disable": 0
+      },
+      "department": [
+        1,
+        2
+      ],
+      "ldap_username": "",
+      "custom_fields": [
+        {
+          "id": 87,
+          "field_type": "textarea",
+          "field_value": "test"
+        },
+        {
+          "id": 88,
+          "field_type": "checkbox",
+          "field_value": 1
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "date_created": "2019-01-01 00:00:00",
+      "date_updated": "2019-01-01 00:00:00",
+      "name": "Test",
+      "lastname": "",
+      "email": "test@test.lv",
+      "phone": "",
+      "skype": "",
+      "website": "",
+      "organization": "",
+      "status": "active",
+      "language": "en",
+      "notifications": 0,
+      "api_key": "a43e6bdc-2ff9-483b-8ebf-ea3ade763864",
+      "group": {
+        "id": 1,
+        "type": "user",
+        "name": {
+          "ru": "Клиент",
+          "en": "Client",
+          "ua": "Клиент"
+        },
+        "disable": 0
+      },
+      "department": [
+        1,
+        2
+      ],
+      "ldap_username": "",
+      "custom_fields": [
+        {
+          "id": 87,
+          "field_type": "textarea",
+          "field_value": "test"
+        },
+        {
+          "id": 88,
+          "field_type": "checkbox",
+          "field_value": 1
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "total": 2,
+    "per_page": 30,
+    "current_page": 1,
+    "total_pages": 1
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="UserGet">
+                                    <p>UserGet($options) - Get User data by id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'id'      => 1 // ID пользователя, число (обязательный)
+);
+
+//Print request data
+print_r($start->UserGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 1,
+    "date_created": "2019-01-01 00:00:00",
+    "date_updated": "2019-01-01 00:00:00",
+    "name": "Admin",
+    "lastname": "",
+    "email": "test@helpdeskeddy.com",
+    "phone": "+37129770143",
+    "skype": "",
+    "website": "",
+    "organization": "",
+    "status": "active",
+    "language": "en",
+    "notifications": 0,
+    "api_key": "a32858b4-a65e-49ef-a960-0b7e8d5d1e47",
+    "group": {
+      "id": 2,
+      "type": "staff",
+      "name": {
+        "ru": "Администратор",
+        "en": "Administrator",
+        "ua": "Администратор"
+      },
+      "disable": 0
+    },
+    "department": [
+      1,
+      2
+    ],
+    "ldap_username": "",
+    "custom_fields": [
+      {
+        "id": 87,
+        "field_type": "textarea",
+        "field_value": "test"
+      },
+      {
+        "id": 88,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}                                   </code>
+                                        </pre>
+
+                                </div>
+                                <div id="UserCreate">
+                                    <p>UserCreate($options) - Add new User</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'name'      => 'John', // Имя, строка (обязательный)
+    'lastname      => 'Doe', // Фамилия, строка (необязательный)
+    'email'      => 'info@example.com', // Почта, строка (обязательный)
+    'phone      => '37192345678', // Телефон, строка (необязательный)
+    'skype'      => '', // Скайп, строка (необязательный)
+    'website'      => 'http://example.com', // Вебсайт, строка (необязательный)
+    'organization'      => 'organization', // Организация. Название новой организации. Если заполнено — поле organiz_id не учитывается, строка (необязательный)
+    'organiz_id'      => '', // ID существующей организации, число (необязательный)
+    'status'      => 'test user', //Статус пользователя. Доступные статусы: active, inactive, disabled, fired, строка (необязательный)
+    'language'      => 'en', // Язык пользователя. Доступны все активные языки в системе, строка (необязательный)
+    'notifications'      => 1, // Уведомления на почту. 0 - отключены. Доступные значения 1 и 0, число (необязательный)
+    'group_id      => 15, // ID группы, число (обязательный)
+    'department'      => [0 => 1, 1 => 2], //Департаменты пользователя, массив (обязательный)
+    'password      => '123456', // Пароль, строка (обязательный)
+    'custom_fields'      => [87 => 'test', 2 => 1] //Массив индивидуальных полей контактов, пример: custom_fields[field_id] = value, в случае иерархического поля, необходимо указывать уровень custom_fields[field_id][level] = value, массив (необязательный)
+);
+
+//Print request data
+print_r($start->UserCreate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 22,
+    "date_created": "2019-01-01 00:00:00",
+    "date_updated": "2019-01-01 00:00:00",
+    "name": "John",
+    "lastname": "Doe",
+    "email": "info@example.com",
+    "phone": "37192345678",
+    "skype": "",
+    "website": "http://example.com",
+    "organization": {
+      "id": 8,
+      "name": "Organization",
+      "domains": "",
+      "address": "",
+      "phone": "37192345678",
+      "email": "info@example.com",
+      "web": "http://example.com"
+    },
+    "status": "active",
+    "language": "en",
+    "notifications": 0,
+    "api_key": "cf780f93-8bd4-460d-8a56-1f6adadb8e46",
+    "group": {
+      "id": 1,
+      "type": "user",
+      "name": {
+        "ru": "Клиент",
+        "en": "Client",
+        "ua": "Клиент"
+      },
+      "disable": 0
+    },
+    "department": [
+      1,
+      2
+    ],
+    "ldap_username": "",
+    "custom_fields": [
+      {
+        "id": 87,
+        "field_type": "textarea",
+        "field_value": "test"
+      },
+      {
+        "id": 88,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="UserUpdate">
+                                    <p>UserUpdate($options) - Update User data by id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'id'      => 22, // ID пользователя, число (обязательный
+    'name'      => 'John', // Имя, строка (необязательный)
+    'lastname      => 'Doe', // Фамилия, строка (необязательный)
+    'email'      => 'info@example.com', // Почта, строка (необязательный)
+    'phone      => '37192345678', // Телефон, строка (необязательный)
+    'skype'      => '', // Скайп, строка (необязательный)
+    'website'      => 'http://example.com', // Вебсайт, строка (необязательный)
+    'organization'      => 'organization', // Организация. Название новой организации. Если заполнено — поле organiz_id не учитывается, строка (необязательный)
+    'organiz_id'      => '', // ID существующей организации, число (необязательный)
+    'status'      => 'test user', //Статус пользователя. Доступные статусы: active, inactive, disabled, fired, строка (необязательный)
+    'language'      => 'en', // Язык пользователя. Доступны все активные языки в системе, строка (необязательный)
+    'notifications'      => 1, // Уведомления на почту. 0 - отключены. Доступные значения 1 и 0, число (необязательный)
+    'group_id      => 15, // ID группы, число (необязательный)
+    'department'      => [0 => 1, 1 => 2], //Департаменты пользователя, массив (необязательный)
+    'password      => '123456', // Пароль, строка (необязательный)
+    'custom_fields'      => [87 => 'test', 2 => 1] //Массив индивидуальных полей контактов, пример: custom_fields[field_id] = value, в случае иерархического поля, необходимо указывать уровень custom_fields[field_id][level] = value, массив (необязательный)
+);
+
+//Print request data
+print_r($start->UserUpdate($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "id": 22,
+    "date_created": "2019-01-01 00:00:00",
+    "date_updated": "2019-01-01 00:00:00",
+    "name": "John",
+    "lastname": "Doe",
+    "email": "info@example.com",
+    "phone": "37192345678",
+    "skype": "",
+    "website": "http://example.com",
+    "organization": {
+      "id": 8,
+      "name": "Organization",
+      "domains": "",
+      "address": "",
+      "phone": "37192345678",
+      "email": "info@example.com",
+      "web": "http://example.com"
+    },
+    "status": "active",
+    "language": "en",
+    "notifications": 0,
+    "api_key": "cf780f93-8bd4-460d-8a56-1f6adadb8e46",
+    "group": {
+      "id": 1,
+      "type": "user",
+      "name": {
+        "ru": "Клиент",
+        "en": "Client",
+        "ua": "Клиент"
+      },
+      "disable": 0
+    },
+    "department": [
+      1,
+      2
+    ],
+    "ldap_username": "",
+    "custom_fields": [
+      {
+        "id": 87,
+        "field_type": "textarea",
+        "field_value": "test"
+      },
+      {
+        "id": 88,
+        "field_type": "checkbox",
+        "field_value": 1
+      }
+    ]
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="UserDelete">
+                                    <p>UserDelete($options) - Delete User data by id</p>
+
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'id'      => 15 // ID пользователя, число (обязательный)
+);
+
+//Print request data
+print_r($start->UserDelete($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "errors": [
+    {
+      "code": "s-204",
+      "title": "No content",
+      "details": "User with id {22} successfully deleted"
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-div">
+                        <ul class="footer-links">
+                            <li>
+                                <a href="https://github.com/JackWhiteGit/sdk_proj" target="_blank"><i
+                                        class="fa fa-github"></i>
+                                    Github</a></li>
+                            <li>
+                                <a href="https://helpdeskeddy.ru/api.html" target="_blank"><i
+                                        class="fa fa-book"></i> HelpDeskEddy API Reference</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
