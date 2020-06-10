@@ -4,6 +4,7 @@ namespace HDESDK;
 
 use HDESDK\Auth\Auth;
 use HDESDK\Departments\Departments;
+use HDESDK\KnowledgeBase\KnowledgeBase;
 use HDESDK\Requests\Requests;
 use HDESDK\User\User;
 use HDESDK\Comment\Comment;
@@ -277,10 +278,38 @@ class SDKInit extends Requests
      * @return string
      * @throws Departments
      */
-    public function DepartmentListGet(){
+    public function DepartmentListGet($options){
         $this->answer = Departments::DepartmentListGet('DepartmentListGet',$options);
         return  $this->answer;
     }
 
     //------------------------------- /Departments Part ---------------------------
+
+    //------------------------------- Knowledge Base Part ----------------------------
+
+    /**
+     * Get Knowledge Base Categories list
+     *
+     * @param array $options
+     * @return string
+     * @throws KnowledgeBase
+     */
+    public function CategoriesListGet($options){
+        $this->answer = KnowledgeBase::CategoriesListGet('CategoriesListGet',$options);
+        return  $this->answer;
+    }
+
+    /**
+     * Get Knowledge Base Articles list
+     *
+     * @param array $options
+     * @return string
+     * @throws KnowledgeBase
+     */
+    public function ArticlesListGet($options){
+        $this->answer = KnowledgeBase::ArticlesListGet('ArticlesListGet',$options);
+        return  $this->answer;
+    }
+
+    //------------------------------- /Knowledge Base Part  ---------------------------
 }

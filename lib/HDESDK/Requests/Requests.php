@@ -20,6 +20,7 @@ class Requests extends Auth
         $this->request_url = $this->domen."/api/v2".$this->request_type['url'].$this->option_string['GET'];
         $this->request_header = self::SetRequestHeader($this->request_type);
 
+
         switch ($this->request_type['method']) {
             case 'GET':
             case 'DELETE':
@@ -250,6 +251,20 @@ class Requests extends Auth
                 'url'    => '/users/'.$id,
                 'content_type' => '',
                 'url_part' => array('id')
+            ),
+
+            'CategoriesListGet' => array(
+                'method' => 'GET',
+                'url'    => '/knowledge_base/categories/',
+                'content_type' => '',
+                'url_part' => array()
+            ),
+
+            'ArticlesListGet' => array(
+                'method' => 'GET',
+                'url'    => '/knowledge_base/articles/',
+                'content_type' => '',
+                'url_part' => array()
             )
         );
 
