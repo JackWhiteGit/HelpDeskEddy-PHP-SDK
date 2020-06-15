@@ -23,12 +23,12 @@ class SDKInit extends Requests
      *
      * @param string $user_email
      * @param string $apikey
-     * @param string $domen
+     * @param string $hde_url
      * @return string
      * @throws Auth
      */
-    public function Auth($user_email, $apikey, $domen){
-        $this->token = Auth::SetAuthData($user_email, $apikey, $domen);
+    public function Auth($user_email, $apikey, $hde_url){
+        $this->token = Auth::SetAuthData($user_email, $apikey, $hde_url);
         return $this->token;
     }
 
@@ -149,6 +149,39 @@ class SDKInit extends Requests
      */
     public function TicketAnswerDelete($options){
         $this->answer = Ticket::TicketAnswerDelete($options);
+        return  $this->answer;
+    }
+
+    /**
+     * Get Ticket Statuses List
+     *
+     * @return string
+     * @throws Ticket
+     */
+    public function TicketStatusesListGet(){
+        $this->answer = Ticket::TicketStatusesListGet();
+        return  $this->answer;
+    }
+
+    /**
+     * Get Ticket Priorities List
+     *
+     * @return string
+     * @throws Ticket
+     */
+    public function TicketPrioritiesListGet(){
+        $this->answer = Ticket::TicketPrioritiesListGet();
+        return  $this->answer;
+    }
+
+    /**
+     * Get Ticket Types List
+     *
+     * @return string
+     * @throws Ticket
+     */
+    public function TicketTypesListGet(){
+        $this->answer = Ticket::TicketTypesListGet();
         return  $this->answer;
     }
 

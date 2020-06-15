@@ -54,4 +54,19 @@ class Ticket extends Requests\Requests
         return  $this->answer;
     }
 
+    public function TicketStatusesListGet(){
+        $this->answer = Requests\Requests::SetRequest('TicketStatusesListGet', array());
+        return  $this->answer;
+    }
+
+    public function TicketPrioritiesListGet(){
+        $this->answer = Requests\Requests::SetRequest('TicketPrioritiesListGet', array());
+        return  $this->answer;
+    }
+
+    public function TicketTypesListGet(){
+        $this->answer = Requests\Requests::SetRequest('TicketTypesListGet', array());
+        return  $this->answer;
+    }
+
 }

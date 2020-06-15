@@ -7,17 +7,17 @@ use HDESDK\Auth\Auth;
 
 class Requests extends Auth
 {
-    public $request_url;
-    public $request_type;
-    public $option_string;
-    public $request_header;
-    public $request_config;
+    private $request_url;
+    private $request_type;
+    private $option_string;
+    private $request_header;
+    private $request_config;
 
     public function SetRequest($request_type, $options){
 
         $this->request_type = self::RequestTypeConfig($request_type,  $options);
         $this->option_string = self::SetOptions($options, $this->request_type);
-        $this->request_url = $this->domen."/api/v2".$this->request_type['url'].$this->option_string['GET'];
+        $this->request_url = $this->hde_url."/api/v2".$this->request_type['url'].$this->option_string['GET'];
         $this->request_header = self::SetRequestHeader($this->request_type);
 
 
@@ -263,6 +263,27 @@ class Requests extends Auth
             'ArticlesListGet' => array(
                 'method' => 'GET',
                 'url'    => '/knowledge_base/articles/',
+                'content_type' => '',
+                'url_part' => array()
+            ),
+
+            'TicketStatusesListGet' => array(
+                'method' => 'GET',
+                'url'    => '/statuses/',
+                'content_type' => '',
+                'url_part' => array()
+            ),
+
+            'TicketPrioritiesListGet' => array(
+                'method' => 'GET',
+                'url'    => '/priorities/',
+                'content_type' => '',
+                'url_part' => array()
+            ),
+
+            'TicketTypesListGet' => array(
+                'method' => 'GET',
+                'url'    => '/types/',
                 'content_type' => '',
                 'url_part' => array()
             )

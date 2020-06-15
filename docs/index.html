@@ -135,19 +135,19 @@
                             <hr/>
                             <h4>Method List</h4>-->
                             <div>
-                                    <div id="Authorization">
-                                        <p>Auth ($user_email, $apikey, $domen) - Generates a new access token</p>
-                                        <span>@params</span>
-                                        <ul>
-                                            <li>$user_email - registered user email address</li>
-                                            <li>$apikey     - API user key (You can find it in the user card, keys are visible only to the main administrator)</li>
-                                            <li>$domen      - Your HDE system address (example "https://example.helpdeskeddy.com")</li>
-                                        </ul>
-                                        <span>@return</span>
-                                        <ul>
-                                            <li>$token - Access token string</li>
-                                        </ul>
-                                        <pre>
+                                <div id="Authorization">
+                                    <p>Auth ($user_email, $apikey, $hde_url) - Generates a new access token</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$user_email - registered user email address</li>
+                                        <li>$apikey     - API user key (You can find it in the user card, keys are visible only to the main administrator)</li>
+                                        <li>$hde_url      - Your HDE system address (example: "https://example.helpdeskeddy.com")</li>
+                                    </ul>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>$token - Access token string</li>
+                                    </ul>
+                                    <pre>
 
                                             <code>
 //Initialisation
@@ -158,14 +158,14 @@ $start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskedd
                                             </code>
                                         </pre>
 
-                                    </div>
-                                    <div id="GetToken">
-                                        <p>GetToken() - Return access token for current user</p>
-                                        <span>@return</span>
-                                        <ul>
-                                            <li>$token - Access token string</li>
-                                        </ul>
-                                        <pre>
+                                </div>
+                                <div id="GetToken">
+                                    <p>GetToken() - Return access token for current user</p>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>$token - Access token string</li>
+                                    </ul>
+                                    <pre>
 
                                             <code>
 //Initialisation
@@ -178,7 +178,7 @@ $start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskedd
 $start->GetToken();
                                             </code>
                                         </pre>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1748,9 +1748,10 @@ print_r($start->UserDelete($options));
             </footer>
         </div>
 
+    </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
