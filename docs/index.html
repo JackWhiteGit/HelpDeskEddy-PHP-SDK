@@ -36,13 +36,13 @@
                     </ul>
                 </div>
                 <hr/>
-                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Departments</a></h3>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Departments</h3>
                     <ul>
                         <li><a href="#Departments" >Get Departments</a></li>
                     </ul>
                 </div>
                 <hr/>
-                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Tickets</a></h3>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Tickets</h3>
 
                     <ul>
                         <li><a href="#TicketGet" >Get Ticket</a></li>
@@ -54,6 +54,14 @@
                         <li><a href="#TicketAnswerSet" >New Answer</a></li>
                         <li><a href="#TicketAnswerUpdate" >Update Answer</a></li>
                         <li><a href="#TicketAnswerDelete" >Delete Answer</a></li>
+                        <li><a href="#TicketStatusesListGet" >Get Ticket Statuses List</a></li>
+                        <li><a href="#TicketPrioritiesListGet" >Get Ticket Priorities List</a></li>
+                        <li><a href="#TicketTypesListGet" >Get Ticket Types List</a></li>
+                        <li><a href="#CustomFieldsListGet" > Get Tickets Custom Fields List</a></li>
+                        <li><a href="#CustomFieldGet" >Get Custom Field</a></li>
+                        <li><a href="#OptionsGet" >Get Custom Field Options</a></li>
+                        <li><a href="#OptionsSet" >Set Custom Field Options</a></li>
+                        <li><a href="#OptionsDelete" >Delete Custom Field Option</a></li>
                     </ul>
                 </div>
                 <hr/>
@@ -77,6 +85,13 @@
                         <li><a href="#UserDelete" >Delete User</a></li>
                     </ul>
                 </div>
+                <div class="box"><h3><i class="fa fa-book fa-1x"></i> Knowledge Base</h3>
+                    <ul>
+                        <li><a href="#CategoriesListGet" >Get Categories List</a></li>
+                        <li><a href="#ArticlesListGet" >Get Articles List</a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
@@ -101,6 +116,7 @@
                                 <li>HDESDK\User</li>
                                 <li>HDESDK\Comment</li>
                                 <li>HDESDK\Tickets</li>
+                                <li>HDESDK\KnowledgeBase</li>
                             </ul>
                         </div>
                     </div>
@@ -120,6 +136,7 @@
                                 <li>Ticket</li>
                                 <li>User</li>
                                 <li>Comment</li>
+                                <li>KnowledgeBase</li>
                             </ul>
                         </div>
                     </div>
@@ -996,6 +1013,654 @@ print_r($start->TicketAnswerDelete($options));
                                         </pre>
 
                                 </div>
+                                <div id="TicketStatusesListGet">
+                                    <p>TicketStatusesListGet() - Get Ticket Statuses List</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Print request data
+print_r($start->TicketStatusesListGet());
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": [
+    {
+      "id": "open",
+      "name": {
+        "ru": "Открыто",
+        "en": "Open",
+        "ua": "Открыто"
+      }
+    },
+    {
+      "id": "process",
+      "name": {
+        "ru": "В процессе",
+        "en": "In progress",
+        "ua": "В процессе"
+      }
+    },
+    {
+      "id": "closed",
+      "name": {
+        "ru": "Выполнено",
+        "en": "Closed",
+        "ua": "Выполнено"
+      }
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="TicketPrioritiesListGet">
+                                    <p>TicketPrioritiesListGet() - Get Ticket Priorities List</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+
+//Print request data
+print_r($start->TicketPrioritiesListGet());
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": [
+    {
+      "id": 2,
+      "name": {
+        "ru": "Стандартно",
+        "en": "Standard",
+        "ua": "Стандартно"
+      }
+    },
+    {
+      "id": 3,
+      "name": {
+        "ru": "Средний",
+        "en": "Medium",
+        "ua": "Средний"
+      }
+    },
+    {
+      "id": 1,
+      "name": {
+        "ru": "Срочно",
+        "en": "Very urgent",
+        "ua": "Срочно"
+      }
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="TicketTypesListGet">
+                                    <p>TicketTypesListGet() -Get Ticket Types List</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>y</li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Print request data
+print_r($start->TicketTypesListGet());
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": [
+    {
+      "id": 0,
+      "name": {
+        "ru": "Без типа",
+        "en": "Without type",
+        "ua": "Без типа"
+      }
+    },
+    {
+      "id": 1,
+      "name": {
+        "ru": "Проблема",
+        "en": "Problem",
+        "ua": "Проблема"
+      }
+    },
+    {
+      "id": 2,
+      "name": {
+        "ru": "Задание",
+        "en": "Task",
+        "ua": "Задание"
+      }
+    },
+    {
+      "id": 3,
+      "name": {
+        "ru": "Ошибка",
+        "en": "Bug",
+        "ua": "Ошибка"
+      }
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="CustomFieldsListGet">
+                                    <p>CustomFieldsListGet() - Get Tickets Custom Fields List</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+
+//Print request data
+print_r($start->CustomFieldsListGet());
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "2": {
+      "id": 2,
+      "name": {
+        "ru": "Select",
+        "en": "Select",
+        "ua": "Select"
+      },
+      "field_type": "select",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        }
+      }
+    },
+    "3": {
+      "id": 3,
+      "name": {
+        "ru": "Date",
+        "en": "Date",
+        "ua": "Date"
+      },
+      "field_type": "date",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": false
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": false
+        }
+      }
+    },
+    "4": {
+      "id": 4,
+      "name": {
+        "ru": "Checkbox",
+        "ua": "Checkbox"
+      },
+      "field_type": "checkbox",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": false
+        }
+      }
+    },
+    "5": {
+      "id": 5,
+      "name": {
+        "ru": "Text",
+        "en": "Text",
+        "ua": "Text"
+      },
+      "field_type": "text",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": true,
+          "required_to_close_ticket": true
+        }
+      }
+    },
+    "6": {
+      "id": 6,
+      "name": {
+        "ru": "Textarea",
+        "en": "Textarea",
+        "ua": "Textarea"
+      },
+      "field_type": "textarea",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": false
+        }
+      }
+    },
+    "7": {
+      "id": 7,
+      "name": {
+        "ru": "Number",
+        "en": "Number",
+        "ua": "Number"
+      },
+      "field_type": "number",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": false
+        }
+      }
+    },
+    "8": {
+      "id": 8,
+      "name": {
+        "1": {
+          "ru": "Related",
+          "en": "Related",
+          "ua": "Related"
+        },
+        "2": {
+          "ru": "Related 2",
+          "en": "Related 2",
+          "ua": "Related 2"
+        },
+        "3": {
+          "ru": "Related 3",
+          "en": "Related 3",
+          "ua": "Related 3"
+        },
+        "4": {
+          "ru": "Related 4",
+          "en": "Related 4",
+          "ua": "Related 4"
+        }
+      },
+      "field_type": "hierarchy",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": true,
+          "required_to_close_ticket": false
+        }
+      }
+    }
+  },
+  "pagination": {
+    "total": 7,
+    "per_page": 30,
+    "current_page": 1,
+    "total_pages": 1
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="CustomFieldGet">
+                                    <p>CustomFieldGet($options) - Get Custom Field</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$options - options array</li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'id'      => 15 // ID поля, число (обязательный)
+);
+
+//Print request data
+print_r($start->CustomFieldGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "2": {
+      "id": 2,
+      "name": {
+        "ru": "Select",
+        "en": "Select",
+        "ua": "Select"
+      },
+      "field_type": "select",
+      "permissions": {
+        "staff": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        },
+        "user": {
+          "view": true,
+          "edit": true,
+          "required_to_create_ticket": false,
+          "required_to_close_ticket": true
+        }
+      }
+    }
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="OptionsGet">
+                                    <p>OptionsGet($options) - Get Custom Field Options</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$options - options array</li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'custom_field_id'      => 1, // ID поля, число (обязательный)
+);
+
+//Print request data
+print_r($start->OptionsGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": [
+    {
+      "id": 5,
+      "pid": 0,
+      "name": {
+        "ru": "1",
+        "en": "1",
+        "ua": "1"
+      }
+    },
+    {
+      "id": 6,
+      "pid": 0,
+      "name": {
+        "ru": "2",
+        "en": "2",
+        "ua": "2"
+      }
+    },
+    {
+      "id": 7,
+      "pid": 0,
+      "name": {
+        "ru": "3",
+        "en": "3",
+        "ua": "3"
+      }
+    },
+    {
+      "id": 171,
+      "pid": 0,
+      "name": {
+        "ru": "4",
+        "en": "4",
+        "ua": "4"
+      }
+    }
+  ],
+  "pagination": {
+    "total": 4,
+    "per_page": 50,
+    "current_page": 1,
+    "total_pages": 1
+  }
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="OptionsSet">
+                                    <p>OptionsSet($options) - Set Custom Field Options</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$options - options array</li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'custom_field_id'      => 1, // ID поля, число (обязательный)
+    'options'      => {"options":[{"id": "20", "name":{"ru":"update option","en":"update option","ua":"update option"}}]} // Добавить/обновить опции, массив (обязательный)
+);
+
+//Print request data
+print_r($start->OptionsSet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": [
+    {
+      "id": 20,
+      "pid": 0,
+      "name": {
+        "ru": "update option",
+        "en": "update option",
+        "ua": "update option"
+      }
+    },
+    {
+      "id": 233,
+      "pid": 0,
+      "name": {
+        "ru": "new option",
+        "en": "new option",
+        "ua": "new option"
+      }
+    },
+    {
+      "id": 234,
+      "pid": 21,
+      "name": {
+        "ru": "new option",
+        "en": "new option",
+        "ua": "new option"
+      }
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                                <div id="OptionsDelete">
+                                    <p>OptionsDelete($options) - Delete Custom Field Option by custom_field_id and option_id</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$options - options array</li>
+                                    </ul>
+                                    <pre>
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'custom_field_id'      => 1, // ID поля, число (обязательный)
+    'option_id'      => 233 // ID опции, число (обязательный)
+);
+
+//Print request data
+print_r($start->OptionsDelete($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "errors": [
+    {
+      "code": "s-204",
+      "title": "No content",
+      "details": "Option with id {233} successfully deleted"
+    }
+  ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1720,6 +2385,336 @@ print_r($start->UserDelete($options));
       "details": "User with id {22} successfully deleted"
     }
   ]
+}
+                                            </code>
+                                        </pre>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12" >
+                    <div class="well clearfix">
+                        <div class="sprite"></div>
+                        <div class="box">
+                            <h3><i class="fa fa-book fa-1x"></i> Knowledge Base Part</h3>
+                            <div>
+                                <div id="CategoriesListGet">
+                                    <p>CategoriesListGet($options) -  Get Knowledge Base Categories list</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$options - options array</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'page'      => 1,// Номер страницы, число (необязательный)
+    'public'      => false,// Поиск по публичным категориям, булево (необязательный)
+    'parent_list'      => '1,2,3',// Поиск категорий по родительским категориям, через запятую, строка (необязательный)
+    'from_date_created'      => '2018-12-31 00:00:00',// Дата создания от, строка (необязательный)
+    'to_date_created'      => '2018-12-31 00:00:00',// Дата создания до, строка (необязательный)
+    'from_date_updated'      => '2018-12-31 00:00:00',//Дата изменения от, строка (необязательный)
+    'to_date_updated'      => '2018-12-31 00:00:00',// Дата изменения до, строка (необязательный)
+    'order_by'      => 'position'// Сортировка категорий, можно указать через запятую. Категории можно сортировать по параметрам: date_created, date_updated, position. Порядок сортировки {asc} (по возрастанию) и {desc} (по убыванию). Значение по умолчанию: position{asc}, строка (необязательный)
+);
+
+//Print request data
+print_r($start->CategoriesListGet());
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "1": {
+      "id": 1,
+      "parent_id": 0,
+      "position": 23,
+      "date_created": "2017-03-24 15:47:01",
+      "date_updated": "2019-03-05 20:19:40",
+      "access": "staff",
+      "access_by_groups": [
+        1,
+        3,
+        2
+      ],
+      "title": {
+        "ru": "test category 1",
+        "en": "test category 1",
+        "ua": "test category 1"
+      }
+    },
+    "2": {
+      "id": 2,
+      "parent_id": 1,
+      "position": 21,
+      "date_created": "2017-05-29 11:57:24",
+      "date_updated": "2018-12-06 15:25:57",
+      "access": "user",
+      "access_by_groups": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        2
+      ],
+      "title": {
+        "ru": "test category 2",
+        "en": "test category 2",
+        "ua": "test category 2"
+      }
+    },
+    "-1": {
+      "id": -1,
+      "parent_id": 0,
+      "position": 1,
+      "date_created": "2015-12-31 23:00:00",
+      "date_updated": "2019-01-30 15:54:21",
+      "access": "public",
+      "access_by_groups": [
+        1,
+        3,
+        2
+      ],
+      "title": {
+        "ru": "Шаблоны",
+        "en": "Templates",
+        "ua": "Шаблони"
+      }
+    },
+    "-2": {
+      "id": -2,
+      "parent_id": 0,
+      "position": 3,
+      "date_created": "2018-01-01 00:00:00",
+      "date_updated": "2019-03-16 01:06:45",
+      "access": "user",
+      "access_by_groups": [
+        1,
+        3,
+        2
+      ],
+      "title": {
+        "ru": "Новости",
+        "en": "News",
+        "ua": "Новини"
+      }
+    }
+  },
+  "pagination": {
+    "total": 4,
+    "per_page": 30,
+    "current_page": 1,
+    "total_pages": 1
+  }
+}                                        </code>
+                                        </pre>
+
+                                </div>
+                                <div id="ArticlesListGet">
+                                    <p>ArticlesListGet($options) - Get Knowledge Base Articles list</p>
+                                    <span>@params</span>
+                                    <ul>
+                                        <li>$options - options array</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+//Initialisation
+$start = new \HDESDK\SDKInit();
+
+//User authorization
+$start->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy.com');
+
+//Set options
+$options = array(
+    'page'      => 1,// Номер страницы, число (необязательный)
+    'public'      => false,// Поиск по публичным статьям, булево (необязательный)
+    'category_list'      => '1,2,3',// Поиск статей по категориям, через запятую, строка (необязательный)
+    'from_date_created'      => '2018-12-31 00:00:00',// Дата создания от, строка (необязательный)
+    'to_date_created'      => '2018-12-31 00:00:00',// Дата создания до, строка (необязательный)
+    'from_date_updated'      => '2018-12-31 00:00:00',//Дата изменения от, строка (необязательный)
+    'to_date_updated'      => '2018-12-31 00:00:00',// Дата изменения до, строка (необязательный)
+    'order_by'      => 'views'// Сортировка статей, можно указать через запятую. Статьи можно сортировать по параметрам: date_created, date_updated, views, pin. Порядок сортировки {asc} (по возрастанию) и {desc} (по убыванию). Значение по умолчанию: date_created{desc}, строка (необязательный)
+);
+
+//Print request data
+print_r($start->ArticlesListGet($options));
+                                            </code>
+                                        </pre>
+                                    <span>@return</span>
+                                    <ul>
+                                        <li>application/json</li>
+                                    </ul>
+                                    <pre>
+
+                                            <code>
+{
+  "data": {
+    "56": {
+      "id": 56,
+      "date_created": "2018-07-17 15:15:00",
+      "date_updated": "2018-07-24 17:12:55",
+      "show_me_only": false,
+      "access": "public",
+      "pin": false,
+      "views_count": 130,
+      "categories": [
+        1
+      ],
+      "title": {
+        "ru": "test article",
+        "en": "test article",
+        "ua": "test article"
+      },
+      "tags": {
+        "ru": [
+          "test",
+          "test2",
+          "test3"
+        ],
+        "en": [],
+        "ua": []
+      },
+      "body": {
+        "ru": "<p>test body</p>",
+        "en": "<p>test body</p>",
+        "ua": "<p>test body</p>"
+      },
+      "files": []
+    },
+    "57": {
+      "id": 57,
+      "date_created": "2018-07-17 15:15:00",
+      "date_updated": "2018-07-24 17:27:27",
+      "show_me_only": false,
+      "access": "staff",
+      "pin": false,
+      "views_count": 43,
+      "categories": [
+        1,
+        2
+      ],
+      "title": {
+        "ru": "test article",
+        "en": "test article",
+        "ua": "test article"
+      },
+      "tags": {
+        "ru": [
+          "режим",
+          "серия pro"
+        ],
+        "en": [],
+        "ua": []
+      },
+      "body": {
+        "ru": "<p>test body</p>",
+        "en": "<p>test body</p>",
+        "ua": "<p>test body</p>"
+      },
+      "files": []
+    },
+    "58": {
+      "id": 58,
+      "date_created": "2018-07-17 15:15:00",
+      "date_updated": "2018-07-17 15:15:00",
+      "show_me_only": false,
+      "access": "user",
+      "pin": false,
+      "views_count": 3,
+      "categories": [
+        2
+      ],
+      "title": {
+        "ru": "test article",
+        "en": "test article",
+        "ua": "test article"
+      },
+      "tags": {
+        "ru": [
+          "ретранслятор",
+          "ретрансляция",
+          "ртр",
+          "ри-м",
+          "рр"
+        ],
+        "en": [],
+        "ua": []
+      },
+      "body": {
+        "ru": "<p>test body</p>",
+        "en": "<p>test body</p>",
+        "ua": "<p>test body</p>"
+      },
+      "files": []
+    },
+    "60": {
+      "id": 60,
+      "date_created": "2018-07-24 17:24:00",
+      "date_updated": "2019-02-01 18:04:21",
+      "show_me_only": false,
+      "access": "public",
+      "pin": false,
+      "views_count": 32,
+      "categories": [
+        -2,
+        2
+      ],
+      "title": {
+        "ru": "test article",
+        "en": "test article",
+        "ua": "test article"
+      },
+      "tags": {
+        "ru": [],
+        "en": [],
+        "ua": []
+      },
+      "body": {
+        "ru": "<p>test body</p>",
+        "en": "<p>test body</p>",
+        "ua": "<p>test body</p>"
+      },
+      "files": [
+        {
+          "name": "test.gif",
+          "url": "https://домен_системы/ru/knowledge_base/download/60/file/f8bb43e593d867d27c965d38dfec721fbb084cf9",
+          "data_type": "gif"
+        },
+        {
+          "name": "test.png",
+          "url": "https://домен_системы/ru/knowledge_base/download/60/file/b818daf594dd3b61098cce7fef7954bc0314edd5",
+          "data_type": "png"
+        }
+      ]
+    }
+  },
+  "pagination": {
+    "total": 4,
+    "per_page": 10,
+    "current_page": 1,
+    "total_pages": 1
+  }
 }
                                             </code>
                                         </pre>

@@ -185,6 +185,65 @@ class SDKInit extends Requests
         return  $this->answer;
     }
 
+    /**
+     * Get Tickets Custom Fields List
+     *
+     * @return string
+     * @throws Ticket
+     */
+    public function CustomFieldsListGet(){
+        $this->answer = Ticket::CustomFieldsListGet();
+        return  $this->answer;
+    }
+
+    /**
+     * Get Custom Field
+     *
+     * @param array $options
+     * @return string
+     * @throws Ticket
+     */
+    public function CustomFieldGet($options){
+        $this->answer = Ticket::CustomFieldGet($options);
+        return  $this->answer;
+    }
+
+    /**
+     * Get Custom Field Options
+     *
+     * @param array $options
+     * @return string
+     * @throws Ticket
+     */
+    public function OptionsGet($options){
+        $this->answer = Ticket::OptionsGet($options);
+        return  $this->answer;
+    }
+
+    /**
+     * Set Custom Field Options
+     *
+     * @param array $options
+     * @return string
+     * @throws Ticket
+     */
+    public function OptionsSet($options){
+        $this->answer = Ticket::OptionsSet($options);
+        return  $this->answer;
+    }
+
+    /**
+     * Delete Custom Field Option by custom_field_id and option_id
+     *
+     * @param array $options
+     * @return string
+     * @throws Ticket
+     */
+    public function OptionsDelete($options){
+        $this->answer = Ticket::OptionsDelete($options);
+        return  $this->answer;
+    }
+
     //------------------------------- /Tickets Part ---------------------------------
 
     //------------------------------- Comments Part ---------------------------------

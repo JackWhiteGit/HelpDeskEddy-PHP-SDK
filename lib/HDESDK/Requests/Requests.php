@@ -114,10 +114,11 @@ class Requests extends Auth
 
     private function RequestTypeConfig($request_type,  $options){
 
-        $ticket_id = '';
-        $id = '';
+        $ticket_id = $id = $custom_field_id = $option_id ='';
         if(isset($options['id'])) $id = $options['id'];
         if(isset($options['ticket_id'])) $ticket_id = $options['ticket_id'];
+        if(isset($options['custom_field_id'])) $custom_field_id = $options['custom_field_id'];
+        if(isset($options['option_id'])) $option_id = $options['option_id'];
 
         $this->request_config = array(
             'DepartmentListGet' => array(
@@ -286,6 +287,41 @@ class Requests extends Auth
                 'url'    => '/types/',
                 'content_type' => '',
                 'url_part' => array()
+            ),
+
+            'CustomFieldsListGet' => array(
+                'method' => 'GET',
+                'url'    => '/custom_fields/',
+                'content_type' => '',
+                'url_part' => array()
+            ),
+
+            'CustomFieldGet' => array(
+                'method' => 'GET',
+                'url'    => '/custom_fields/'.$custom_field_id,
+                'content_type' => '',
+                'url_part' => array('custom_field_id')
+            ),
+
+            'OptionsGet' => array(
+                'method' => 'GET',
+                'url'    => '/custom_fields/'.$custom_field_id.'/options/',
+                'content_type' => '',
+                'url_part' => array('custom_field_id')
+            ),
+
+            'OptionsSet' => array(
+                'method' => 'POST',
+                'url'    => '/custom_fields/'.$custom_field_id.'/options/',
+                'content_type' => 'application/json',
+                'url_part' => array('custom_field_id')
+            ),
+
+            'OptionsDelete' => array(
+                'method' => 'DELETE',
+                'url'    => '/custom_fields/'.$custom_field_id.'/options/'.$option_id,
+                'content_type' => '',
+                'url_part' => array('custom_field_id', 'option_id')
             )
         );
 

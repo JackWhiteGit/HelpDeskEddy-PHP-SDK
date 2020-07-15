@@ -69,4 +69,29 @@ class Ticket extends Requests\Requests
         return  $this->answer;
     }
 
+    public function CustomFieldsListGet(){
+        $this->answer = Requests\Requests::SetRequest('CustomFieldsListGet', array());
+        return  $this->answer;
+    }
+
+    public function CustomFieldGet($options){
+        $this->answer = Requests\Requests::SetRequest('CustomFieldGet',$options);
+        return  $this->answer;
+    }
+
+    public function OptionsGet($options){
+        $this->answer = Requests\Requests::SetRequest('OptionsGet', $options);
+        return  $this->answer;
+    }
+
+    public function OptionsSet($options){
+        $this->answer = Requests\Requests::SetRequest('OptionsSet', $options);
+        return  $this->answer;
+    }
+
+    public function OptionsDelete($options){
+        $this->answer = Requests\Requests::SetRequest('OptionsDelete', $options);
+        return  $this->answer;
+    }
+
 }
