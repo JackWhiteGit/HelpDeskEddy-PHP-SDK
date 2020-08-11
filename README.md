@@ -40,7 +40,7 @@ $test->Auth('example@example.com', 'your-api-key', 'https://example.helpdeskeddy
 
 ```
 
-Then you can call any needed method, like tiket create for example:
+Then you can call any needed method, like ticket creation for example:
 
 ```php
 // Request examples
