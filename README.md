@@ -5,8 +5,8 @@ This page gives you the basic steps for getting up and running with the HelpDesk
 
 ## The SDK has the following requirements:
 
-Minimum PHP version: 5.3.0
-cURL extension
+Minimum PHP version: 5.3.0<br/>
+cURL extension<br/>
 JSON extension
 
 ## What is the HelpDeskEddy SDK?
